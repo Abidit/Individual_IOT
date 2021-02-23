@@ -17,7 +17,7 @@ void setup() {
 void loop() {
   Blynk.run();
   temperature_Humidity_check();                           // Climate Check
-  delay(5000);  
+  delay(3000);  
   byte h1 = dhtA.readHumidity();
   Serial.begin(115200);
   Serial.println(h1);
@@ -26,15 +26,15 @@ void loop() {
 void temperature_Humidity_check() {
 
   
-    byte h1 = dhtA.readHumidity();            // t1 and h1 are celsius and humidity readings
-    byte t1 = dhtA.readTemperature();         // from DHT/A
+    float h1 = dhtA.readHumidity();            // t1 and h1 are celsius and humidity readings
+    float t1 = dhtA.readTemperature();         // from DHT/A
     Blynk.virtualWrite(V0, t1);               // Virtual Pin 0 frequency to PUSH in Blynk
     Blynk.virtualWrite(V1, h1);               // Virtual Pin 1 frequency to PUSH in Blynk
-    if ( t1 >= 20){
+    if ( t1 > 20){
       Blynk.notify("The temperature is High.");
     }
     else{
-      Blynk.notify("The temperature is Low.");
+      Blynk.notify("The temperature is low.");
     }
    
 }
