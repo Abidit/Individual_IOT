@@ -3,14 +3,14 @@
 #include <BlynkSimpleEsp8266.h>
 
 char authentication[] = "MRxiiFKu9AdWyQTsjFpGIHwa6paq0xH1";
-char WiFi_ssid[] = "temp";
-char password[] = "11111111";
+char WiFi_ssid[] = "Kumar";
+char password[] = "9860601754";
 
 DHT dhtA(5, DHT22);                           // DHT instance named dhtA, D1 and sensor type
 
 void setup() {
   Blynk.begin(authentication, WiFi_ssid, password);  // Connection with Blynk server
-  Blynk.notify("Your System is ready to use.")
+  Blynk.notify("Your System is ready to use.");
   dhtA.begin();                               // Beginning the DHT-22
 }
 
@@ -31,10 +31,10 @@ void temperature_Humidity_check() {
     Blynk.virtualWrite(V0, t1);               // Virtual Pin 0 frequency to PUSH in Blynk
     Blynk.virtualWrite(V1, h1);               // Virtual Pin 1 frequency to PUSH in Blynk
     if ( t1 >= 20){
-      Blynk.notify("The temperature is High.")
+      Blynk.notify("The temperature is High.");
     }
-    if ( t1 < = 20){
-      Blynk.notify("The temperature is Low".)
+    else{
+      Blynk.notify("The temperature is Low.");
     }
    
 }
